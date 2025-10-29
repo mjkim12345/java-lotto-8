@@ -7,4 +7,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validatePurchaseAmountPositive(int purchaseAmount) {
+        if (purchaseAmount <= 0) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
