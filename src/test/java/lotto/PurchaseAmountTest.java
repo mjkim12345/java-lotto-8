@@ -28,4 +28,17 @@ public class PurchaseAmountTest {
         assertThatThrownBy(() -> validator.validatePurchaseAmountDivisibleByThousand(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 구입금액이_0이하이면_예외() {
+        // Given
+        String input = "0";
+        Parser parser = new Parser();
+        int purchaseAmount = parser.parsePurchaseAmount(input);
+        Validator validator = new Validator();
+
+        // When & Then
+        assertThatThrownBy(() -> validator.validatePurchaseAmountPositive(purchaseAmount))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
