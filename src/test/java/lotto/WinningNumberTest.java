@@ -8,11 +8,11 @@ public class WinningNumberTest {
     @Test
     void 당첨번호에_숫자가_아닌_값_입력시_예외() {
         // Given
-        String input = "12,13,14,15,16,a";
+        String input = "12,123,32,32,32,a";
         Parser parser = new Parser();
 
         // When & Then
-        assertThatThrownBy(() -> parser.parseWinningNumber())
+        assertThatThrownBy(() -> parser.parseWinningNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
