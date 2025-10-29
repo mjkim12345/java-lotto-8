@@ -13,6 +13,6 @@ public class PurchaseAmountTest {
 
         // When & Then
         assertThatThrownBy(() -> parser.parsePurchaseAmount(input))
-                .isInstanceOf(IllegalArgumentException);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
