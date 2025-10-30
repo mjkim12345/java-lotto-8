@@ -44,4 +44,17 @@ public class WinningNumberTest {
         assertThatThrownBy(() -> validator.validateWinningNumbersRange(inputWinningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 당첨번호들_중에_중복_값이_있을_경우_예외() {
+        // Given
+        String input = "1,2,3,4,6,6";
+        Parser parser = new Parser();
+        List<Integer> inputWinningNumbers = parser.parseWinningNumber(input);
+        Validator validator = new Validator();
+
+        // When & Then
+        assertThatThrownBy(() -> validator.validateWinningNumbersDuplication(inputWinningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
