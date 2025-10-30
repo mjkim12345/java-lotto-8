@@ -41,7 +41,7 @@ public class WinningNumberTest {
         Validator validator = new Validator();
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateWinningNumbesRange(inputWinningNumbers))
+        assertThatThrownBy(() -> validator.validateWinningNumbersRange(inputWinningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

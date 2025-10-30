@@ -21,4 +21,12 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateWinningNumbersRange(List<Integer> winningNumbers) {
+        for (Integer winningNumber : winningNumbers) {
+            if (winningNumber>45 || winningNumber<1) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
