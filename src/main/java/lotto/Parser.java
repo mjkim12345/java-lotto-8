@@ -23,4 +23,12 @@ public class Parser {
             throw new IllegalArgumentException();
         }
     }
+
+    public int parseBonusNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
