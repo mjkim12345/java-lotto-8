@@ -39,4 +39,10 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateBonusNumberRange(int bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber < 1) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
