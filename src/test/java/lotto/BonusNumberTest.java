@@ -15,4 +15,17 @@ public class BonusNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    void 보너스_번호가_1에서_45사이의_숫자가_아닌_경우_예외() {
+        // Given
+        String input = "47";
+        Parser parser = new Parser();
+        int bonusNumber = parser.parseBonusNumber(input);
+        Validator validator = new Validator();
+
+        // When & Then
+        assertThatThrownBy(() -> validator.validateBonusNumberRange(bonusNumber))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
 }
