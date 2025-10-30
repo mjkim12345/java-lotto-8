@@ -31,4 +31,17 @@ public class WinningNumberTest {
         assertThatThrownBy(() -> validator.validateWinningNumbersCount(inputWinningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @Test
+    void 당첨번호에_1에서_45사이의_숫자가_아닌_값이_입력될_경우_예외() {
+        // Given
+        String input = "1,2,3,4,5,48";
+        Parser parser = new Parser();
+        List<Integer> inputWinningNumbers = parser.parseWinningNumber(input);
+        Validator validator = new Validator();
+
+        // When & Then
+        assertThatThrownBy(() -> validator.validateWinningNumbesRange(inputWinningNumbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
