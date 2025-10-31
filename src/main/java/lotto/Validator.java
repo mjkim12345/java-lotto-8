@@ -45,4 +45,12 @@ public class Validator {
             throw new IllegalArgumentException();
         }
     }
+
+    public void validateBonusNumberDuplication(List<Integer> winningNumbers, int bonusNumber) {
+        for (Integer winningNumber : winningNumbers) {
+            if (winningNumber == bonusNumber) {
+                throw new IllegalArgumentException();
+            }
+        }
+    }
 }
