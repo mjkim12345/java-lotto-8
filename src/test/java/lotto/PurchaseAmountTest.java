@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.PurchaseAmount;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -19,26 +20,20 @@ public class PurchaseAmountTest {
     @Test
     void 구입금액이_1000_으로_나누어_떨어지지_않을_경우_예외() {
         // Given
-        String input = "1500";
-        Parser parser = new Parser();
-        int purchaseAmount = parser.parsePurchaseAmount(input);
-        Validator validator = new Validator();
+        int purchaseAmount = 1500;
 
         // When & Then
-        assertThatThrownBy(() -> validator.validatePurchaseAmountDivisibleByThousand(purchaseAmount))
+        assertThatThrownBy(() -> PurchaseAmount.of(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
     void 구입금액이_0이하이면_예외() {
         // Given
-        String input = "0";
-        Parser parser = new Parser();
-        int purchaseAmount = parser.parsePurchaseAmount(input);
-        Validator validator = new Validator();
+        int purchaseAmount = 0;
 
         // When & Then
-        assertThatThrownBy(() -> validator.validatePurchaseAmountPositive(purchaseAmount))
+        assertThatThrownBy(() -> PurchaseAmount.of(purchaseAmount))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

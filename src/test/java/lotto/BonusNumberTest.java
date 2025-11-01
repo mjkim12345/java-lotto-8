@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.BonusNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -21,13 +22,13 @@ public class BonusNumberTest {
     @Test
     void 보너스_번호가_1에서_45사이의_숫자가_아닌_경우_예외() {
         // Given
-        String input = "47";
+        int inputBonusNumber = 47;
+        String numbers = "1,2,3,4,5,6";
         Parser parser = new Parser();
-        int bonusNumber = parser.parseBonusNumber(input);
-        Validator validator = new Validator();
+        List<Integer> winningNumbers = parser.parseWinningNumber(numbers);
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateBonusNumberRange(bonusNumber))
+        assertThatThrownBy(() -> BonusNumber.of(winningNumbers, inputBonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -38,10 +39,9 @@ public class BonusNumberTest {
         String numbers = "1,2,3,4,5,6";
         Parser parser = new Parser();
         List<Integer> winningNumbers = parser.parseWinningNumber(numbers);
-        Validator validator = new Validator();
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateBonusNumberDuplication(winningNumbers,bonusNumber))
+        assertThatThrownBy(() -> BonusNumber.of(winningNumbers, bonusNumber))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }

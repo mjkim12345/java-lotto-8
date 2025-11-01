@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.WinningNumber;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -24,11 +25,10 @@ public class WinningNumberTest {
         // Given
         String input = "1,2,3,4,5,6,7";
         Parser parser = new Parser();
-        List<Integer> inputWinningNumbers = parser.parseWinningNumber(input);
-        Validator validator = new Validator();
+        List<Integer> winningNumbers = parser.parseWinningNumber(input);
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateWinningNumbersCount(inputWinningNumbers))
+        assertThatThrownBy(() -> WinningNumber.of(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -37,11 +37,10 @@ public class WinningNumberTest {
         // Given
         String input = "1,2,3,4,5,48";
         Parser parser = new Parser();
-        List<Integer> inputWinningNumbers = parser.parseWinningNumber(input);
-        Validator validator = new Validator();
+        List<Integer> winningNumbers = parser.parseWinningNumber(input);
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateWinningNumbersRange(inputWinningNumbers))
+        assertThatThrownBy(() -> WinningNumber.of(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -50,11 +49,10 @@ public class WinningNumberTest {
         // Given
         String input = "1,2,3,4,6,6";
         Parser parser = new Parser();
-        List<Integer> inputWinningNumbers = parser.parseWinningNumber(input);
-        Validator validator = new Validator();
+        List<Integer> winningNumbers = parser.parseWinningNumber(input);
 
         // When & Then
-        assertThatThrownBy(() -> validator.validateWinningNumbersDuplication(inputWinningNumbers))
+        assertThatThrownBy(() -> WinningNumber.of(winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
