@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 class LottoTest {
     @Test
@@ -21,5 +21,15 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @Test
+    void 구입_금액에_맞춰_로또_n개를_발행한다() {
+        // Given
+        int purchaseAmount = 2000;
+        LottoService lottoService = new LottoService();
+
+        // When
+        Lottos lottos = lottoService.generateRandomLottos(purchaseAmount);
+        // Then
+        assertThat(2).isEqualTo(lottos.count());
+    }
 }
