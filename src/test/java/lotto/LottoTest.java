@@ -1,5 +1,7 @@
 package lotto;
 
+import lotto.domain.Lotto;
+import lotto.domain.PurchaseAmount;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,11 +26,14 @@ class LottoTest {
     @Test
     void 구입_금액에_맞춰_로또_n개를_발행한다() {
         // Given
-        int purchaseAmount = 2000;
+        int inputPurchaseAmount = 2000;
+        PurchaseAmount purchaseAmount = PurchaseAmount.of(inputPurchaseAmount);
+        int lottoAmount = purchaseAmount.getLottoAmount();
         LottoService lottoService = new LottoService();
 
         // When
-        Lottos lottos = lottoService.generateRandomLottos(purchaseAmount);
+        Lottos lottos = lottoService.generateRandomLottos(lottoAmount);
+
         // Then
         assertThat(2).isEqualTo(lottos.count());
     }
