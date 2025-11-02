@@ -5,7 +5,9 @@ import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class LottoService {
 
@@ -21,5 +23,17 @@ public class LottoService {
             lotto.add(generateNumbers());
         }
         return Lottos.of(lotto);
+    }
+
+    public int countMatchedNumbers(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
+        Set<Integer> lottoNumberSet = new HashSet<>(lottoNumbers);
+        int beforeSize = lottoNumberSet.size();
+
+        for (Integer winningNumber : winningNumbers) {
+            lottoNumberSet.add(winningNumber);
+        }
+
+        int afterSize = lottoNumberSet.size();
+        return beforeSize * 2 - afterSize;
     }
 }

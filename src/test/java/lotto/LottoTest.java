@@ -53,4 +53,18 @@ class LottoTest {
         // Then
         assertThat(result).isEqualTo(5);
     }
+
+    @Test
+    void 발행된_로또_1개와_보너스_번호를_비교한다() {
+        // Given
+        List<Integer> lottoNumbers = List.of(45, 1, 3, 4, 5, 6);
+        int bonusNumber = 1;
+
+        // When
+        LottoService lottoService = new LottoService();
+        int result = lottoService.countMatchedBonusNumber(bonusNumber,lottoNumbers);
+
+        // Then
+        assertThat(result).isEqualTo(1);
+    }
 }
