@@ -28,11 +28,11 @@ class LottoTest {
         // Given
         int inputPurchaseAmount = 2000;
         PurchaseAmount purchaseAmount = PurchaseAmount.of(inputPurchaseAmount);
-        int lottoAmount = purchaseAmount.getLottoAmount();
+        int lottoCount = purchaseAmount.calculateLottoCount();
         LottoService lottoService = new LottoService();
 
         // When
-        Lottos lottos = lottoService.generateRandomLottos(lottoAmount);
+        Lottos lottos = lottoService.generateRandomLottos(lottoCount);
 
         // Then
         assertThat(2).isEqualTo(lottos.count());
