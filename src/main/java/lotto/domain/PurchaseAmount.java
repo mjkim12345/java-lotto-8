@@ -29,4 +29,8 @@ public class PurchaseAmount {
             throw new IllegalArgumentException();
         }
     }
+
+    public int calculateLottoCount() {
+        return purchaseAmount / 1000;
+    }
 }
