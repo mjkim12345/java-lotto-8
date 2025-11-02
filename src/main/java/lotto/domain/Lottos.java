@@ -14,4 +14,8 @@ public class Lottos {
         return new Lottos(lottos);
     }
 
+    public int count() {
+        return lottos.size();
+    }
+
 }
