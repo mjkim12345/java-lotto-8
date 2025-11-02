@@ -1,6 +1,7 @@
 package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.WinningRank;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 
@@ -45,5 +46,25 @@ public class LottoService {
         int afterSize = lottoNumberSet.size();
 
         return afterSize - beforeSize;
+    }
+
+    public int calculateWinningAmount(int matchCount, int bonusMatchCount) {
+
+        if (matchCount == 6) {
+            return WinningRank.TWO_BILLION.getWinningAmount();
+        }
+
+        if (bonusMatchCount == 1 && matchCount == 5) {
+            return WinningRank.THIRTY_MILLION.getWinningAmount();
+        }
+
+        if (matchCount == 4) {
+            return WinningRank.FIFTY_THOUSANDS.getWinningAmount();
+        }
+
+        if (matchCount == 3) {
+            return WinningRank.FIVE_THOUSANDS.getWinningAmount();
+        }
+        return WinningRank.NONE.getWinningAmount();
     }
 }
