@@ -39,4 +39,18 @@ class LottoTest {
         // Then
         assertThat(2).isEqualTo(lottos.count());
     }
+
+    @Test
+    void 발행된_로또_1개와_당첨번호를_비교한다() {
+        // Given
+        List<Integer> winningNumbers = List.of(45, 2, 3, 4, 5, 6);
+        List<Integer> lottoNumbers = List.of(1, 2, 3, 4, 5, 6);
+
+        // When
+        LottoService lottoService = new LottoService();
+        int result = lottoService.countMatchedNumbers(winningNumbers,lottoNumbers);
+
+        // Then
+        assertThat(result).isEqualTo(5);
+    }
 }
