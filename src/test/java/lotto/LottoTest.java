@@ -58,13 +58,16 @@ class LottoTest {
     void 발행된_로또_1개와_보너스_번호를_비교한다() {
         // Given
         List<Integer> lottoNumbers = List.of(45, 1, 3, 4, 5, 6);
-        int bonusNumber = 1;
+        int bonusNumber1 = 1;
+        int bonusNumber2 = 2;
 
         // When
         LottoService lottoService = new LottoService();
-        int result = lottoService.countMatchedBonusNumber(bonusNumber,lottoNumbers);
+        int result1 = lottoService.countMatchedBonusNumber(bonusNumber1,lottoNumbers);
+        int result2 = lottoService.countMatchedBonusNumber(bonusNumber2,lottoNumbers);
 
         // Then
-        assertThat(result).isEqualTo(1);
+        assertThat(result1).isEqualTo(0);
+        assertThat(result2).isEqualTo(1);
     }
 }
