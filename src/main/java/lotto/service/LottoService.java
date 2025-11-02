@@ -36,4 +36,14 @@ public class LottoService {
         int afterSize = lottoNumberSet.size();
         return beforeSize * 2 - afterSize;
     }
+
+    public int countMatchedBonusNumber(int bonusNumber, List<Integer> lottoNumbers) {
+        Set<Integer> lottoNumberSet = new HashSet<>(lottoNumbers);
+        int beforeSize = lottoNumberSet.size();
+
+        lottoNumberSet.add(bonusNumber);
+        int afterSize = lottoNumberSet.size();
+
+        return afterSize - beforeSize;
+    }
 }
