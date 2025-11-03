@@ -64,4 +64,9 @@ public class LottoService {
         }
         return WinningRank.NONE.getWinningAmount();
     }
+
+    public double calculateProfitRate(int winningAmount, int purchaseAmount) {
+        double rate = (double) winningAmount / purchaseAmount * 100;
+        return Math.round(rate * 10) / 10.0;
+    }
 }
