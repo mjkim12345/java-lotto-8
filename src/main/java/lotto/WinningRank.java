@@ -1,10 +1,10 @@
 package lotto;
 
 public enum WinningRank {
-    TWO_BILLION(2000000000),
-    THIRTY_MILLION(30000000),
-    FIFTY_THOUSANDS(1500000),
-    FIVE_THOUSANDS(5000),
+    FIRST(2000000000),
+    SECOND(30000000),
+    THIRD(1500000),
+    FOURTH(5000),
     NONE(0);
 
     private int winningAmount;

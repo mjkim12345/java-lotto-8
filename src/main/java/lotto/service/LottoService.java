@@ -51,16 +51,16 @@ public class LottoService {
     public int calculateWinningAmount(int matchCount, int bonusMatchCount) {
 
         if (matchCount == 6) {
-            return WinningRank.TWO_BILLION.getWinningAmount();
+            return WinningRank.FIRST.getWinningAmount();
         }
         if (bonusMatchCount == 1 && matchCount == 5) {
-            return WinningRank.THIRTY_MILLION.getWinningAmount();
+            return WinningRank.SECOND.getWinningAmount();
         }
         if (matchCount == 4) {
-            return WinningRank.FIFTY_THOUSANDS.getWinningAmount();
+            return WinningRank.THIRD.getWinningAmount();
         }
         if (matchCount == 3) {
-            return WinningRank.FIVE_THOUSANDS.getWinningAmount();
+            return WinningRank.FOURTH.getWinningAmount();
         }
         return WinningRank.NONE.getWinningAmount();
     }
