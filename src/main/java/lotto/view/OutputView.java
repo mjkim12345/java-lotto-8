@@ -16,6 +16,7 @@ public class OutputView {
     private static final String THIRD_MESSAGE = "5개 일치 (%s원) - %d개";
     private static final String SECOND_MESSAGE = "5개 일치, 보너스 볼 일치 (%s원) - %d개";
     private static final String FIRST_MESSAGE = "6개 일치 (%s원) - %d개";
+    private static final String PROFIT_RATE_MESSAGE = "총 수익률은 %f%%입니다.";
 
     public static void printLottoAmount(int lottoAmount) {
         System.out.printf(LOTTO_AMOUNT_MESSAGE, lottoAmount);
@@ -35,5 +36,9 @@ public class OutputView {
         System.out.printf(THIRD_MESSAGE, WinningRank.THIRD, lottoStatistics.getWinningAmount(WinningRank.THIRD));
         System.out.printf(SECOND_MESSAGE, WinningRank.SECOND, lottoStatistics.getWinningAmount(WinningRank.SECOND));
         System.out.printf(FIRST_MESSAGE, WinningRank.FIRST, lottoStatistics.getWinningAmount(WinningRank.FIRST));
+    }
+
+    public static void printProfitRate (double rate) {
+        System.out.printf(PROFIT_RATE_MESSAGE, rate);
     }
 }
