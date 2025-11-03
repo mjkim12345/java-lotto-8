@@ -7,11 +7,19 @@ import java.util.Map;
 
 public class LottoStatistics {
 
-    private final Map<Integer, Integer> counts = new HashMap<>();
+    private final Map<WinningRank, Integer> counts = new HashMap<>();
 
     public LottoStatistics() {
-        for (WinningRank winningRank : WinningRank.values()) {
-            counts.put(winningRank.getWinningAmount(), 0);
+        for (WinningRank rank : WinningRank.values()) {
+            counts.put(rank, 0);
         }
+    }
+
+    public void add(WinningRank rank) {
+        counts.put(rank, counts.get(rank) + 1);
+    }
+
+    public int getWinningAmount(WinningRank rank) {
+        return counts.get(rank);
     }
 }
