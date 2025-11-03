@@ -17,4 +17,8 @@ public class Lottos {
     public int count() {
         return lottos.size();
     }
+
+    public List<Lotto> values() {
+        return List.copyOf(lottos);
+    }
 }
