@@ -1,10 +1,10 @@
-package lotto;
+package lotto.service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Parser {
+public class ParserService {
 
     public int parsePurchaseAmount(String input) {
         try {

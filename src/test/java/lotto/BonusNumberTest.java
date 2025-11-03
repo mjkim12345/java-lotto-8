@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.BonusNumber;
+import lotto.service.ParserService;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -12,10 +13,10 @@ public class BonusNumberTest {
     void 보너스_번호에_숫자가_아닌_값이_입력될_경우_예외() {
         // Given
         String input = "a";
-        Parser parser = new Parser();
+        ParserService parserService = new ParserService();
 
         // When & Then
-        assertThatThrownBy(() -> parser.parseBonusNumber(input))
+        assertThatThrownBy(() -> parserService.parseBonusNumber(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,8 +25,8 @@ public class BonusNumberTest {
         // Given
         int inputBonusNumber = 47;
         String numbers = "1,2,3,4,5,6";
-        Parser parser = new Parser();
-        List<Integer> winningNumbers = parser.parseWinningNumber(numbers);
+        ParserService parserService = new ParserService();
+        List<Integer> winningNumbers = parserService.parseWinningNumber(numbers);
 
         // When & Then
         assertThatThrownBy(() -> BonusNumber.of(winningNumbers, inputBonusNumber))
@@ -37,8 +38,8 @@ public class BonusNumberTest {
         // Given
         int bonusNumber = 3;
         String numbers = "1,2,3,4,5,6";
-        Parser parser = new Parser();
-        List<Integer> winningNumbers = parser.parseWinningNumber(numbers);
+        ParserService parserService = new ParserService();
+        List<Integer> winningNumbers = parserService.parseWinningNumber(numbers);
 
         // When & Then
         assertThatThrownBy(() -> BonusNumber.of(winningNumbers, bonusNumber))

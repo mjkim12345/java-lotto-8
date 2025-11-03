@@ -15,8 +15,8 @@ public class WinningAmountTest {
 
         // When
         LottoService lottoService = new LottoService();
-        int winningAmount = lottoService.calculateWinningAmount(matchCount, bonusMatchCount);
-
+        WinningRank winningRank = lottoService.calculateWinningAmount(matchCount, bonusMatchCount);
+        int winningAmount = winningRank.getWinningAmount();
         // Then
         assertThat(winningAmount).isEqualTo(30000000);
     }

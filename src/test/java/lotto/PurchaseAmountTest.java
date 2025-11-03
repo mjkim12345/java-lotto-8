@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.PurchaseAmount;
+import lotto.service.ParserService;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.*;
 
@@ -10,10 +11,10 @@ public class PurchaseAmountTest {
     void 구입금액에_숫자가_아닌_값_입력시_예외() {
         // Given
         String input = "100o";
-        Parser parser = new Parser();
+        ParserService parserService = new ParserService();
 
         // When & Then
-        assertThatThrownBy(() -> parser.parsePurchaseAmount(input))
+        assertThatThrownBy(() -> parserService.parsePurchaseAmount(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

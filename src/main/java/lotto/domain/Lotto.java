@@ -25,4 +25,8 @@ public class Lotto {
                 .sorted()
                 .toList();
     }
+
+    public List<Integer> values() {
+        return List.copyOf(numbers);
+    }
 }

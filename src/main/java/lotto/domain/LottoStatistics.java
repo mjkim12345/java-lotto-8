@@ -22,4 +22,15 @@ public class LottoStatistics {
     public int getWinningAmount(WinningRank rank) {
         return counts.get(rank);
     }
+
+    public int calculateTotalWinningAmount() {
+        int total = 0;
+
+        for (WinningRank rank : WinningRank.values()) {
+            int count = counts.get(rank);
+            int amount = rank.getWinningAmount();
+            total += amount * count;
+        }
+        return total;
+    }
 }

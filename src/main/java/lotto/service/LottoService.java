@@ -2,8 +2,7 @@ package lotto.service;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.WinningRank;
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
+import lotto.domain.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,11 +11,6 @@ import java.util.Set;
 
 public class LottoService {
 
-    public Lotto generateNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-        return Lotto.of(numbers);
-    }
-
     public Lottos generateRandomLottos(int count) {
         List<Lotto> lotto = new ArrayList<>();
 
@@ -24,6 +18,28 @@ public class LottoService {
             lotto.add(generateNumbers());
         }
         return Lottos.of(lotto);
+    }
+
+    public Lotto generateNumbers() {
+        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Lotto.of(numbers);
+    }
+
+    public WinningRank calculateLottoResult(List<Integer> winningNumber, int bonusNumber, List<Integer> lottoNumbers) {
+        int matchCount = countMatchedNumbers(winningNumber, lottoNumbers);
+        int bonusMatchCount = countMatchedBonusNumber(bonusNumber, lottoNumbers);
+        WinningRank rank = calculateWinningAmount(matchCount, bonusMatchCount);
+        return rank;
+    }
+
+    public LottoStatistics calculateAllLotto(Lottos lottos, WinningNumber winningNumber, BonusNumber bonusNumber) {
+        LottoStatistics statistics = new LottoStatistics();
+
+        for (Lotto lotto : lottos.values()) {
+            WinningRank rank = calculateLottoResult(winningNumber.values(), bonusNumber.getBonusNumber(), lotto.values());
+            statistics.add(rank);
+        }
+        return statistics;
     }
 
     public int countMatchedNumbers(List<Integer> winningNumbers, List<Integer> lottoNumbers) {
@@ -48,21 +64,21 @@ public class LottoService {
         return afterSize - beforeSize;
     }
 
-    public int calculateWinningAmount(int matchCount, int bonusMatchCount) {
+    public WinningRank calculateWinningAmount(int matchCount, int bonusMatchCount) {
 
         if (matchCount == 6) {
-            return WinningRank.FIRST.getWinningAmount();
+            return WinningRank.FIRST;
         }
         if (bonusMatchCount == 1 && matchCount == 5) {
-            return WinningRank.SECOND.getWinningAmount();
+            return WinningRank.SECOND;
         }
         if (matchCount == 4) {
-            return WinningRank.THIRD.getWinningAmount();
+            return WinningRank.THIRD;
         }
         if (matchCount == 3) {
-            return WinningRank.FOURTH.getWinningAmount();
+            return WinningRank.FOURTH;
         }
-        return WinningRank.NONE.getWinningAmount();
+        return WinningRank.NONE;
     }
 
     public double calculateProfitRate(int winningAmount, int purchaseAmount) {

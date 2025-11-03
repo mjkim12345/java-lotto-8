@@ -44,4 +44,8 @@ public class WinningNumber {
             throw new IllegalArgumentException();
         }
     }
+
+    public List<Integer> values() {
+        return List.copyOf(winningNumbers);
+    }
 }
