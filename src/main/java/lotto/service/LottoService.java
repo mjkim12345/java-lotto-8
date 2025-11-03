@@ -72,17 +72,20 @@ public class LottoService {
         if (bonusMatchCount == 1 && matchCount == 5) {
             return WinningRank.SECOND;
         }
-        if (matchCount == 4) {
+        if (matchCount == 5) {
             return WinningRank.THIRD;
         }
-        if (matchCount == 3) {
+        if (matchCount == 4) {
             return WinningRank.FOURTH;
+        }
+        if (matchCount == 3) {
+            return WinningRank.FIFTH;
         }
         return WinningRank.NONE;
     }
 
     public double calculateProfitRate(int winningAmount, int purchaseAmount) {
-        double rate = (double) winningAmount / purchaseAmount * 100;
-        return Math.round(rate * 10) / 10.0;
+        double rate = (double) winningAmount / purchaseAmount;
+        return Math.round(rate * 1000) / 10.0;
     }
 }

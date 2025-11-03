@@ -13,20 +13,20 @@ public class PurchaseAmount {
         return new PurchaseAmount(purchaseAmount);
     }
 
-    public void validate(int purchaseAmount) {
+    private void validate(int purchaseAmount) {
         validatePurchaseAmountDivisibleByThousand(purchaseAmount);
         validatePurchaseAmountPositive(purchaseAmount);
     }
 
-    public void validatePurchaseAmountDivisibleByThousand(int purchaseAmount) {
+    private void validatePurchaseAmountDivisibleByThousand(int purchaseAmount) {
         if (purchaseAmount % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 단위여야 합니다.");
         }
     }
 
-    public void validatePurchaseAmountPositive(int purchaseAmount) {
-        if (purchaseAmount <= 0) {
-            throw new IllegalArgumentException();
+    private void validatePurchaseAmountPositive(int purchaseAmount) {
+        if (purchaseAmount < 1000) {
+            throw new IllegalArgumentException("[ERROR] 구입금액은 1000원 이상이여야 합니다.");
         }
     }
 

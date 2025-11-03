@@ -10,7 +10,7 @@ public class ParserService {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
     }
 
@@ -20,7 +20,7 @@ public class ParserService {
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
     }
 
@@ -28,7 +28,7 @@ public class ParserService {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 잘못된 입력입니다.");
         }
     }
 }

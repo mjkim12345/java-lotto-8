@@ -25,14 +25,14 @@ public class WinningNumber {
 
     public void validateWinningNumbersCount(List<Integer> winningNumbers) {
         if (winningNumbers.size() != 6) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호는 6개여야 합니다.");
         }
     }
 
     public void validateWinningNumbersRange(List<Integer> winningNumbers) {
         for (Integer winningNumber : winningNumbers) {
             if (winningNumber > 45 || winningNumber < 1) {
-                throw new IllegalArgumentException();
+                throw new IllegalArgumentException("[ERROR] 당첨번호들은 1이상 45이하의 숫자여야 합니다.");
             }
         }
     }
@@ -41,7 +41,7 @@ public class WinningNumber {
         int originalSize = winningNumbers.size();
         Set<Integer> winningNumbersSet = new HashSet<>(winningNumbers);
         if (originalSize != winningNumbersSet.size()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("[ERROR] 당첨번호들은 고유한 숫자들이여 합니다.");
         }
     }
 
