@@ -20,4 +20,18 @@ public class WinningAmountTest {
         // Then
         assertThat(winningAmount).isEqualTo(30000000);
     }
+
+    @Test
+    void 총_수익률을_계산한다() {
+        // Given
+        int winningAmount = 5000;
+        int purchaseAmount = 8000;
+        LottoService lottoService = new LottoService();
+
+        // When
+        double profitRate = lottoService.calculateProfitRate(winningAmount, purchaseAmount);
+
+        // Then
+        assertThat(profitRate).isEqualTo(62.5);
+    }
 }
