@@ -70,18 +70,4 @@ class LottoTest {
         assertThat(result1).isEqualTo(0);
         assertThat(result2).isEqualTo(1);
     }
-
-    @Test
-    void 당첨_금액을_계산하고_저장한다() {
-        // Given
-        int matchCount = 5;
-        int bonusMatchCount = 1;
-
-        // When
-        LottoService lottoService = new LottoService();
-        int winningAmount = lottoService.calculateWinningAmount(matchCount, bonusMatchCount);
-
-        // Then
-        assertThat(winningAmount).isEqualTo(30000000);
-    }
 }

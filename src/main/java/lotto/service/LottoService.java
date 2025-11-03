@@ -53,15 +53,12 @@ public class LottoService {
         if (matchCount == 6) {
             return WinningRank.TWO_BILLION.getWinningAmount();
         }
-
         if (bonusMatchCount == 1 && matchCount == 5) {
             return WinningRank.THIRTY_MILLION.getWinningAmount();
         }
-
         if (matchCount == 4) {
             return WinningRank.FIFTY_THOUSANDS.getWinningAmount();
         }
-
         if (matchCount == 3) {
             return WinningRank.FIVE_THOUSANDS.getWinningAmount();
         }
